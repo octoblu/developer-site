@@ -1,0 +1,4 @@
+pre[class*="language-"] {
+  overflow: auto;
+  max-height: none;
+}

@@ -19,6 +19,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
     <link href="css/prism.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -147,7 +148,7 @@
 	  					<p><a href="https://github.com/octoblu/meshblu">Meshblu</a> is a cloud-based MQTT & CoAP-powered network that scales to meet any needs whether the nodes are smart devices, sensors, cloud resources, drones, Arduinos, Raspberry Pis, etc</p>
 	  					<span class="service-icon"> <i class="fa fa-cloud"></i></span>
   					</div>
-  				</div>	
+  				</div>
   				<!-- break -->
   				<div class="col-md-4 col-sm-4">
   					<div class="service-content">
@@ -155,7 +156,7 @@
 	  					<p>Meshblu is powered by Node.JS and based entirely on its integrated REST API and realtime RPC-style Websocket API with extensible JSON device & messaging.</p>
 	  					<span class="service-icon"> <i class="fa fa-gear"></i></span>
   					</div>
-  				</div>	
+  				</div>
   				<!-- break -->
   				<div class="col-md-4 col-sm-4">
   					<div class="service-content">
@@ -163,7 +164,7 @@
 	  					<p>Meshblu provides a queriable device directory API for registering and discovering nodes on the Meshblu network. Meshblu also maintains presence for each device making it easy to know what is on/offline</p>
 	  					<span class="service-icon"> <i class="fa fa-hdd-o"></i></span>
   					</div>
-  				</div>	
+  				</div>
   			</div>
 
         <div class="row">
@@ -173,7 +174,7 @@
               <p>Meshblu issues a unique 36 character UUID and secret token for each device connecting to our network. These device "credentials" are required for authentication, API calls, and subscriptions.</p>
               <span class="service-icon"> <i class="fa fa-lock"></i></span>
             </div>
-          </div>  
+          </div>
           <!-- break -->
           <div class="col-md-4 col-sm-4">
             <div class="service-content">
@@ -181,7 +182,7 @@
               <p>Our <a href="https://github.com/octoblu/gateblu">Gateblu Gateway</a> allows you to connect smart devices with IP addresses and not-so-smart devices without IP addresses to Meshblu via our software-based hub which supports Mac, Linux, & Windows</p>
               <span class="service-icon"> <i class="fa fa-asterisk"></i></span>
             </div>
-          </div>  
+          </div>
           <!-- break -->
           <div class="col-md-4 col-sm-4">
             <div class="service-content">
@@ -189,7 +190,7 @@
               <p>Our <a href="https://github.com/octoblu/microblu_mqtt">Microblu OS</a> connects your Arduino to Meshblu and awaits Firmata commands to retrieve sensor data or send/remove voltage to/from pins</p>
               <span class="service-icon"> <i class="fa fa-bolt"></i></span>
             </div>
-          </div>  
+          </div>
         </div>
 
         <div class="row">
@@ -199,7 +200,7 @@
               <p>Node.JS is known for fast, event-driven operations perfect for nodes and devices such as RaspberryPi, Arduino, and Tessel. Our NPM module gets your app up & running quickly!</p>
               <span class="service-icon"> <i class="fa fa-plug"></i></span>
             </div>
-          </div>  
+          </div>
           <!-- break -->
           <div class="col-md-4 col-sm-4">
             <div class="service-content">
@@ -207,7 +208,7 @@
               <p>Connect to Meshblu from a web browser or mobile device using our SkyNet.JS javascript include file!</p>
               <span class="service-icon"> <i class="fa fa-code"></i></span>
             </div>
-          </div>  
+          </div>
           <!-- break -->
           <div class="col-md-4 col-sm-4">
             <div class="service-content">
@@ -215,7 +216,7 @@
               <p><a href="https://chrome.google.com/webstore/detail/nodeblu/aanmmiaepnlibdlobmbhmfemjioahilm">Nodeblu</a> allows you experiment with the Octoblu and Meshblu IoT platforms by dragging, dropping, and wiring up various nodes connected to the platform from Google Chrome!</p>
               <span class="service-icon"> <i class="fa fa-code-fork"></i></span>
             </div>
-          </div>  
+          </div>
         </div>
 
 
@@ -283,7 +284,7 @@
                 <b>/status</b>
                 <br />Returns the SkyNet platform status
                 <br /><!br />
-                <pre><code>curl -X GET http://skynet.im/status</code></pre>                 
+                <pre><code>curl -X GET http://skynet.im/status</code></pre>
                 <pre><code class="language-javascript">{"skynet":"online","timestamp":1381536589633,"eventCode":200,"_id":"5258934d56330f7dd0000009"}</code></pre>
               </div>
               <!-- </td></tr></table> -->
@@ -1070,10 +1071,7 @@ socket.on('connect', function(){
 
     }
   });
-});
-
-            </code>
-          </pre>
+});</code></pre>
 
             <p>Websocket API commands include: status, register, unregister, update, whoami, devices, subscribe, unsubscribe, authenticate, data, and message. You can send a message to a specific UUID or an array of UUIDs or all nodes on SkyNet. </p>
 
@@ -1147,10 +1145,7 @@ conn.on('ready', function(){
   // Log sensor data to skynet
   conn.data({temperature: 75, windspeed: 10});
 
-});
-
-            </code>
-</pre>
+});</code></pre>
 
           </div>
 
@@ -1332,11 +1327,7 @@ conn.on('ready', function(data){
   });
 
 
-});
-
-
-            </code>
-          </pre>
+});</code></pre>
 
             <p>
               SkyNet automatically creates a websocket room for each connect device. This allows apps and other nodes and devices to connect and monitor events and commands. Note: UUID and Token are required to subscribe to device/node events.
@@ -1372,9 +1363,7 @@ script.
   socket.on('message', function (message) {
     console.log('message received', message);
     $(".activity").prepend(JSON.stringify(message) + '&lt;br /&gt;');
-  });
-    </code>
-            </pre>
+  });</code></pre>
             <br /><br />
             <h2>SkyNet.JS Javascript Library</h2>
 
@@ -1417,9 +1406,7 @@ script.
 &lt;body&gt;
   SkyNet client-side app
 &lt;/body&gt;
-&lt;/html&gt;
-</code>
-            </pre>
+&lt;/html&gt;</code></pre>
 
 
           </div>
@@ -1527,10 +1514,7 @@ setTimeout(function(){
         console.log(body);
       }
   });
-},1000);
-
-      </code>
-    </pre>
+},1000);</code></pre>
       </div>
       <div class="tab-pane fade" id="node_example">
       <pre ng-non-bindable="">
@@ -1561,9 +1545,7 @@ conn.on('ready', function(data){
     }
   });
 
-});
-      </code>
-    </pre>
+});</code></pre>
       </div>
 
 <div class="tab-pane fade" id="js_example">
@@ -1605,10 +1587,7 @@ conn.on('ready', function(data){
 &lt;body&gt;
   Skynet.JS Demo
 &lt;/body&gt;
-&lt;/html&gt;
-
-</code>
-</pre>
+&lt;/html&gt;</code></pre>
 </div>
 
 
@@ -1660,7 +1639,7 @@ conn.on('ready', function(data){
             <h1>Connect to Octoblu and Send/Receive Messages</h1>
             <div class="alert alert-success">
               npm install skynet
-            </div>            
+            </div>
           </div>
         </div>
         <div class="row">
@@ -1700,10 +1679,7 @@ conn.on('ready', function(data){
     console.log(data);
   });
 
-});
-
-              </code>
-            </pre>
+});</code></pre>
           </div>
           <div class="col-md-6">
             <h3>Output</h3>
@@ -1725,9 +1701,7 @@ sending message
 message received
 { devices: '5ddfa401-3f62-11e4-9968-a5374769756b',
   payload: { hello: 'world' },
-  fromUuid: '5ddfa401-3f62-11e4-9968-a5374769756b' }
-              </code>
-            </pre>
+  fromUuid: '5ddfa401-3f62-11e4-9968-a5374769756b' }</code></pre>
           </div>
         </div>
 
@@ -1762,7 +1736,7 @@ conn.on('ready', function(data){
     led = new five.Led(13);
     console.log('Board ready');
     conn.on('message', function(data){
-      console.log('message received', data);    
+      console.log('message received', data);
       if(data.payload.led == true){
         led.on();
       } else {
@@ -1770,9 +1744,7 @@ conn.on('ready', function(data){
       }
     });
   });
-});
-              </code>
-            </pre>
+});</code></pre>
           </div>
           <div class="col-md-6">
             <h3>Interaction</h3>
@@ -1782,16 +1754,14 @@ conn.on('ready', function(data){
 // Turn LED on
 conn.message({
   "devices": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "payload": {"led": true} 
+  "payload": {"led": true}
 });
 
 // Turn LED off
 conn.message({
   "devices": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "payload": {"led": false} 
-});
-              </code>
-            </pre>
+  "payload": {"led": false}
+});</code></pre>
           </div>
         </div>
 
@@ -1800,7 +1770,7 @@ conn.message({
           <div class="col-md-12">
             <center><img src="img/drone.jpg" width="300px" /> </center>
             <h1>Flying a <a href="http://nodecopter.com/">NodeCopter</a> Drone via Octoblu</h1>
-            
+
             <div class="alert alert-success">
               npm install skynet<br/>
               npm install ar-drone
@@ -1857,9 +1827,7 @@ conn.on('ready', function(data){
         });
     }
   });
-});
-              </code>
-            </pre>
+});</code></pre>
           </div>
           <div class="col-md-6">
             <h3>Interaction</h3>
@@ -1869,11 +1837,8 @@ conn.on('ready', function(data){
 // Fly demo! You can also send {"fly":"up"} or {"fly":"down"} or {"fly":"spin"} etc as the payload!
 conn.message({
   "devices": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "payload": {"demo": true} 
-});
-
-              </code>
-            </pre>
+  "payload": {"demo": true}
+});</code></pre>
           </div>
         </div>
 
@@ -2028,7 +1993,7 @@ conn.message({
               </ul>
             </div>
           </div>
-          
+
           <div class="col-md-2 col-sm-6 col-xs-12">
             <div class="footer-widget">
               <div class="widget-header">
