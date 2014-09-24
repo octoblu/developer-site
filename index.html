@@ -845,12 +845,29 @@ limit (overrides the default 10 updates)
             </td>
             <td>
             <div class="feature col-md-10">
-              <b>/subscribe/{uuid}?token={token}</b>
+              <b>/subscribe</b>
               <br />This is a streaming API that returns device/node messages as they are sent and received. Notice the comma at the end of the response. SkyNet doesn't close the stream.
-              <br />Note: You can subscribe to UUIDs without knowing the token but this will only allow you to receive broadcast messages from the UUID (devices=* or devices=all)
               <br />
-              <pre>coap get -H "skynet_auth_uuid={:UUID}&skynet_auth_token={:TOKEN}" coap://coap.octoblu.com/subscribe/ad698900-2546-11e3-87fb-c560cb0ca47b?token=123 -o</pre>
+              <pre>coap get -H "skynet_auth_uuid={:UUID}&skynet_auth_token={:TOKEN}" coap://coap.octoblu.com/subscribe -o</pre>
               <pre>{"devices":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc","message":{"red":"on"},"timestamp":1388768270795,"eventCode":300,"_id":"52c6ec0e4f67671e44000001"},{"devices":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc","message":{"red":"on"},"timestamp":1388768277473,"eventCode":300,"_id":"52c6ec154f67671e44000002"},</pre>
+            </div>
+            </td></tr></table>
+          </div>
+
+          <div class="col-md-12">
+            <table width="100%"><tr><td width="200px">
+            <div class="feature col-md-2 text-center">
+              <button class="btn btn-large btn-primary" disabled> GET</button>
+            </div>
+            </td>
+            <td>
+            <div class="feature col-md-10">
+              <b>/subscribe/{uuid}</b>
+              <br />This is a streaming API that returns device/node broadcasts messages as they are sent. Notice the comma at the end of the response. SkyNet doesn't close the stream.
+              <br />Note: This will stream broadcast messages from the uuid you've specified. The uuid/token you're authenticating with must have permissions to view messages from the subscribed uuid.
+              <br />
+              <pre>coap get -H "skynet_auth_uuid={:UUID}&skynet_auth_token={:TOKEN}" coap://coap.octoblu.com/subscribe/ad698900-2546-11e3-87fb-c560cb0ca47b -o</pre>
+              <pre>{"devices":"*","fromUuid":"ad698900-2546-11e3-87fb-c560cb0ca47b","message":{"red":"on"},"timestamp":1388768270795,"eventCode":300,"_id":"52c6ec0e4f67671e44000001"},{"devices":"*","fromUuid":"ad698900-2546-11e3-87fb-c560cb0ca47b","message":{"red":"on"},"timestamp":1388768277473,"eventCode":300,"_id":"52c6ec154f67671e44000002"},</pre>
             </div>
             </td></tr></table>
           </div>
