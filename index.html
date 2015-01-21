@@ -52,6 +52,7 @@
             <li class="hidden"><a href="#page-home"></a></li>
             <li><a href="#service">Platform</a></li>
             <li><a href="#about">API</a></li>
+            <li><a href="#security">Security</a></li>
             <li><a href="#portfolio">Examples</a></li>
             <li><a href="#component">Demos</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1884,7 +1885,39 @@ conn.message({
   		</div>
   	</div>
   	<!-- end:component -->
-
+<div id="security">
+  <div class="container">
+     <article id="device-security">
+      <h1 class="text-center">Device Security in Meshblu</h1>
+      <p id="device-security-info">
+        Meshblu gives you the ability to secure access to registered devices by allowing a device to have configured permission whitelists and black-lists. There will be a white-list or a black-list for each of the permissions stored in the device properties. The lists will contain the UUIDs of devices that will be granted access or banned from communicating with the secured device. 
+      </p>
+      <section id="device-identification">
+       <h3>Identification</h3>
+       <p>
+        The primary means of identifying a device is by a UUID and a Token. The UUID and Token can be created by meshblu or registered with the device using the <a href="#rest_api">API</a>. When connecting to Meshblu, devices will be authenticated with their UUID and Token.
+        </p>
+      </section>
+      <section id="device-ownership">
+        <h3>Ownership</h3>
+        <p>
+          When a device doesn't have an owner, it is in an unclaimed (public) state. The device and its properties are searchable by authenticated resources on the same network. The device can then be <a href="#rest_api">claimed (see the claim API)</a>. Once a device is claimed (owned), it will not be visible publicly except to the owner of the device.
+        </p>
+      </section>
+      <section id="permissions">
+        <h3>Device Permissions and White/Black Lists</h3>
+        The device permissions in Meshblu, are similar to permissions in *nix based systems. The following permissions are supported:
+        <ul>
+          <li><strong>Discover</strong> - The device is discoverable and the device will show up in API queries where its UUID is specified as a query parameter</li>
+           <li><strong>View</strong> - A device with a view white-list will only be discoverable and visible to devices with white-listed UUIDs and will not be visible to black-listed devices</li>
+          <li><strong>Configure</strong> - A device with a configure white-list will only allow devices with white-listed UUIDs to update and modify the device configuration / properties. Black-listed devices will not be allowed to configure the device.</li>
+          <li><strong>Send Messages</strong> - A device with a send message white-list will only send messages to  devices with white-listed UUIDs. It will not send messages to black-listed UUIDs</li>
+          <li><strong>Receive Messages</strong> - A device with a receive message white-list will only receive messages from devices with white-listed UUIDs. It will not receive messages to black-listed UUIDs </li>          
+        </ul>
+      </section>
+     </article>
+  </div>
+</div>
 <div id="contact">
     <!-- begin:promo -->
     <div class="promo-02" style="background-image: url('img/socialnetworks.png');">
@@ -1902,6 +1935,7 @@ conn.message({
       </div>
     </div>
     <!-- end:promo -->
+
 
 
     <div id="contacts">
