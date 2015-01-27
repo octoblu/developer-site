@@ -8,7 +8,7 @@
   <meta name="keywords" content="octoblu, iot, internet of things, skynet, mesh">
   <meta name="author" content="Octoblu">
   <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <title>Octoblu</title>
+  <title>Octoblu - Developer Documentation</title>
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -254,6 +254,7 @@
         <li><a href="#coap_api" data-toggle="tab">CoAP API</a></li>
         <li><a href="#mqtt_api" data-toggle="tab">MQTT API</a></li>
         <li><a href="#javascript_api" data-toggle="tab">NPM / Javascript API</a></li>
+        <li><a href="#meshblu_util" data-toggle="tab">Meshblu Util</a></li>
       </ul>
     </div>
   </div>
@@ -1513,8 +1514,42 @@ Meshblu client-side app
 
 </div>
 
-</div>
 </section>
+
+</div>
+
+<div class="tab-pane fade" id="meshblu_util">
+  <a name="javascript"></a>
+  <section id="meshbluutil">
+    <div class="container">
+      <br />
+      <p>Meshblu also offers a command line utility</p>
+      <pre><code class="language-bash">npm install -g meshblu-util</code></pre>
+
+      <p>To generate a public/private keypair, update meshblu.json with the private key, and publish the public key, run:</p>
+
+      <pre><code class="language-bash">$ meshblu-util keygen meshblu.json</code></pre>
+
+      <p>To learn more about the functionality of the meshblu-util tool, use:</p>
+      <pre><code class="language-bash">
+$ meshblu-util --help
+
+  Usage: meshblu-util [options] [command]
+
+
+  Commands:
+
+    keygen [path/to/meshblu.json]  generate public/private keypair, update meshblu.json with the private key, and publish the public key
+    help [cmd]                     display help for [cmd]
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+ </code></pre>
+
+    </div>
+  </section>
 
 </div>
 
