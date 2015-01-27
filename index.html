@@ -1289,13 +1289,17 @@ conn.on('ready', function(data){
   console.log('UUID AUTHENTICATED!');
   console.log(data);
 
-  // Send and receive messages
-  conn.message({
-    "devices": "*",
-    "payload": {
-      "red":"on"
-    }
-  });
+  // Send message
+  // conn.message(toDeviceUuid, message, [options]);
+  conn.message('*', {"red": "on"});
+
+  // Send an encrypted message. toDevice needs a publicKey registered. See meshblu-util
+  // conn.encryptMessage(toDeviceUuid, message, [options]);
+  conn.encryptMessage(
+    '380207ef-6cd7-4c26-8f49-51e188e70a4e',
+    {"foo": "this will be encrypted"},
+    {"payload": "this will be sent unencrypted"}
+  );
 
   // Subscribe to device/node i/o
   conn.subscribe({
@@ -1320,6 +1324,14 @@ conn.on('ready', function(data){
 
   conn.on('message', function(message){
     console.log('message received', message);
+
+    // {
+    //   "devices": ["0f145816-122e-4364-abb9-799ee87ed6f3"],
+    //   "payload": "this is plain text",
+    //   "decryptedPayload": "this was encrypted",
+    //   "encryptedPayload": "ZUPPNTJFrl4LZHiKIOp8X9raqyl=="
+    // }
+
   });
 
 
@@ -1938,7 +1950,7 @@ this.land();
  <article id="security">
   <h1 class="text-center">Device Security in Meshblu</h1>
   <p id="device-security-info">
-    Meshblu gives you the ability to secure access to registered devices by allowing a device to have configured permission whitelists and black-lists. There will be a white-list or a black-list for each of the permissions stored in the device properties. The lists will contain the UUIDs of devices that will be granted access or banned from communicating with the secured device. 
+    Meshblu gives you the ability to secure access to registered devices by allowing a device to have configured permission whitelists and black-lists. There will be a white-list or a black-list for each of the permissions stored in the device properties. The lists will contain the UUIDs of devices that will be granted access or banned from communicating with the secured device.
   </p>
   <section id="device-identification">
    <h3>Identification</h3>
@@ -1958,7 +1970,7 @@ this.land();
    <div class="col-md-12">
    <h4><b>Discover - (discoverWhitelist or discoverBlacklist)</b></h4>
    <p>
-     The device is discoverable and the device will show up in API queries where its UUID is specified as a query parameter. Adding a UUID to the discoverWhitelist will make the device visible to the given UUID and adding a UUID to the blacklist will prevent the device from being discovered / viewed. 
+     The device is discoverable and the device will show up in API queries where its UUID is specified as a query parameter. Adding a UUID to the discoverWhitelist will make the device visible to the given UUID and adding a UUID to the blacklist will prevent the device from being discovered / viewed.
    </p>
     <div class="col-md-12 table-responsive">
       <!-- <table class="table"><tr><td> -->
@@ -1976,7 +1988,7 @@ this.land();
         <br />
       </div>
       <!-- </td></tr></table> -->
-    </div> 
+    </div>
    </div>
   <div class="col-md-12">
   <h4><b>Configure - (configureWhitelist or configureBlacklist)</b></h4>
@@ -1999,7 +2011,7 @@ this.land();
         <br />
       </div>
       <!-- </td></tr></table> -->
-    </div> 
+    </div>
   </div>
    <div class="col-md-12">
     <h4><b>Send - (sendWhitelist or sendBlacklist)</b></h4>
@@ -2022,12 +2034,12 @@ this.land();
       <br />
     </div>
     <!-- </td></tr></table> -->
-  </div> 
+  </div>
  </div>
  <div class="col-md-12">
     <h4><b>Receive - (receiveWhitelist or receiveBlacklist)</b></h4>
     <p>
-    A device with a receive message white-list will only receive messages from devices with UUIDs in its white list. It will not receive messages from devices with UUIDs in its black list. 
+    A device with a receive message white-list will only receive messages from devices with UUIDs in its white list. It will not receive messages from devices with UUIDs in its black list.
     </p>
     <div class="col-md-12 table-responsive">
     <!-- <table class="table"><tr><td> -->
@@ -2045,7 +2057,7 @@ this.land();
       <br />
     </div>
     <!-- </td></tr></table> -->
-  </div> 
+  </div>
 </div>
 </section>
 </article>
@@ -2200,7 +2212,7 @@ this.land();
   <!-- <a title="Real Time Web Analytics" href="http://clicky.com/100745038"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a> -->
   <script src="//static.getclicky.com/js" type="text/javascript"></script>
   <script type="text/javascript">try{ clicky.init(100780311); }catch(e){}</script>
-  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100780311ns.gif" /></p></noscript>    
+  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100780311ns.gif" /></p></noscript>
 
 </body>
 </html>
