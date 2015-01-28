@@ -1602,13 +1602,15 @@ $ meshblu-util --help
         </p>
         <p>
           This should return a response from Meshblu with your very own UUID and Token like this one!  Please use your own UUID and Token in the examples below.<br />
-          <pre><code class="language-javascript">{"type":"example","ipAddress":"70.171.192.231","uuid":"0cf6c7e1-b2f8-11e3-a36b-61e66c96102e","timestamp":"2014-03-24T02:00:19.038Z","token":"63jous8wnn42huxrdz2456y1ypmk7qfr","channel":"main","online":false}</code></pre>
+          <pre><code class="language-javascript">
+{"type":"example","ipAddress":"70.171.192.231","uuid":"0cf6c7e1-b2f8-11e3-a36b-61e66c96102e","timestamp":"2014-03-24T02:00:19.038Z","token":"63jous8wnn42huxrdz2456y1ypmk7qfr","channel":"main","online":false}
+          </code></pre>
         </p>
         <p>
           We will be using the Meshblu and Request NPM modules in the examples below.  You can install them using the following terminal commands:<br />
           <pre>
-            npm install meshblu
-            npm install request</pre>
+npm install meshblu
+npm install request</pre>
           </p>
           <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
@@ -1682,6 +1684,41 @@ $ meshblu-util --help
 });
 
 });</code></pre>
+</div>
+    <div class="row">
+    <h3>Encrypted Messages</h3>
+      <div class="bs-docs-section">
+        <p id="tabs-examples">Here is an example of sending an encrypted message via REST:<br />
+          <pre><code class="language-bash">
+# generate keypair for sending device
+openssl genrsa -out send_device.key 2048
+openssl rsa -in send_device.key -pubout > send_device.pub
+
+# generate keypair for receiving device
+openssl genrsa -out recv_device.key 2048
+openssl rsa -in recv_device.key -pubout > recv_device.pub
+
+# register the sending device
+curl -X POST https://meshblu.octoblu.com/devices -H 'Content-Type: application/json' -d "{\"publicKey\": \"`cat send_device.pub | base64`\"}" > send_device.json
+
+# register the receiving device
+curl -X POST https://meshblu.octoblu.com/devices -H 'Content-Type: application/json' -d "{\"publicKey\": \"`cat recv_device.pub | base64`\"}" > recv_device.json
+
+# get uuids and tokens
+SEND_UUID=`cat send_device.json | jsawk 'return this.uuid'`
+SEND_TOKEN=`cat send_device.json | jsawk 'return this.token'`
+RECV_UUID=`cat recv_device.json | jsawk 'return this.uuid'`
+
+# encrypt the message
+ENCRYPTED_MESSAGE=`echo 'SUPER SECRET' | openssl rsautl -encrypt -pubin -inkey recv_device.pub | base64`
+
+# send the encrypted payload
+curl -X POST https://meshblu.octoblu.com/messages -H 'Content-Type: application/json' -H "meshblu_auth_uuid: $SEND_UUID" -H "meshblu_auth_token: $SEND_TOKEN" -d "{\"devices\":\"$RECV_UUID\", \"encryptedPayload\":\"$ENCRYPTED_MESSAGE\"}"
+
+          </code></pre>
+        </p>
+      </div>
+    </div>
 </div>
 
 <div class="tab-pane fade" id="js_example">
