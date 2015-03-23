@@ -1258,9 +1258,9 @@ conn.getPublicKey('xxxxxxx-some-other-uuid-xxxxxxxxx', function(error, publicKey
 
       <pre>
         <code class="language-javascript">
-var skynet = require('meshblu');
+var meshblu = require('meshblu');
 
-var conn = skynet.createConnection({
+var conn = meshblu.createConnection({
   "uuid": "ad698900-2546-11e3-87fb-c560cb0ca47b",
   "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
   "server": "localhost", // optional - defaults to ws://meshblu.octoblu.com
@@ -1480,7 +1480,7 @@ $(".activity").prepend(JSON.stringify(message) + '&lt;br /&gt;');
     &lt;head&gt;
     &lt;script src="http://meshblu.octoblu.com/js/meshblu.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-    var conn = skynet.createConnection({
+    var conn = meshblu.createConnection({
     "uuid": "ad698900-2546-11e3-87fb-c560cb0ca47b",
     "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
     "server": "localhost", // optional - defaults to ws://meshblu.octoblu.com
@@ -1657,10 +1657,10 @@ npm install request</pre>
     <div class="tab-pane fade" id="node_example">
       <pre ng-non-bindable="">
         <code  class="language-javascript">
-          var skynet = require('meshblu');
+          var meshblu = require('meshblu');
           var request = require('request');
 
-          var conn = skynet.createConnection({
+          var conn = meshblu.createConnection({
           "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
           "token": "qirqglm6yb1vpldixflopnux4phtcsor"
         });
@@ -1730,7 +1730,7 @@ curl -X POST https://meshblu.octoblu.com/messages -H 'Content-Type: application/
       &lt;head&gt;
       &lt;script src="http://meshblu.octoblu.com/js/meshblu.js"&gt;&lt;/script&gt;
       &lt;script&gt;
-      var conn = skynet.createConnection({
+      var conn = meshblu.createConnection({
       "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
       "token": "qirqglm6yb1vpldixflopnux4phtcsor"
     });
@@ -1820,10 +1820,10 @@ Meshblu.JS Demo
         <h3>node index.js</h3>
         <pre>
           <code class="language-javascript">
-            var skynet = require('meshblu');
+            var meshblu = require('meshblu');
 
             // Not specifying a UUID/Token auto-registers a new device
-            var conn = skynet.createConnection({
+            var conn = meshblu.createConnection({
             "server": "meshblu.octoblu.com",
             "port": 80
           });
@@ -1896,9 +1896,9 @@ Meshblu.JS Demo
       <pre>
         <code class="language-javascript">
           var five = require('johnny-five'), led;
-          var skynet = require('meshblu');
+          var meshblu = require('meshblu');
 
-          var conn = skynet.createConnection({
+          var conn = meshblu.createConnection({
           "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "token": "yyyyyyyyyyyyyyyyyyyyyyyy"
         });
@@ -1956,9 +1956,9 @@ Meshblu.JS Demo
     <pre>
       <code class="language-javascript">
         var five = require('johnny-five'), led;
-        var skynet = require('meshblu');
+        var meshblu = require('meshblu');
 
-        var conn = skynet.createConnection({
+        var conn = meshblu.createConnection({
         "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "token": "yyyyyyyyyyyyyyyyyyyyyyyy"
       });
