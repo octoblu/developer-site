@@ -1,7 +1,7 @@
 <html>
 <head>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="//d1g8h12lk9ydf.cloudfront.net/js/latest/meshblu.bundle.js"></script>
+  <script src="//cdn.octoblu.com/js/latest/meshblu.bundle.js"></script>
 
   <script>
     var conn = meshblu.createConnection({
@@ -15,7 +15,7 @@
     });
 
     conn.on('ready', function(device){
-      console.log('Ready', device);  
+      console.log('Ready', device);
       localStorage.jsconsoleUuid = device.uuid;
       localStorage.jsconsoleToken = device.token;
 
