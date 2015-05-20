@@ -378,6 +378,25 @@
           </div>
 
           <div class="col-md-12 table-responsive">
+            <div class="feature col-md-2">
+              <button class="btn btn-large btn-success" disabled> POST</button>
+            </div>
+            <div class="feature col-md-10">
+              <b>/devices/{uuid}/tokens</b>
+              <br />Returns a new session token for the device<br /><!br />
+              <pre><code>curl -X POST \
+  --header "meshblu_auth_uuid: c9eeca22-fc0f-4081-b430-bd5b67091106" \
+  --header "meshblu_auth_token: 077b6ec9c9dff30869d279aee1fc2a4f776181e9" \
+  http://meshblu.octoblu.com/devices/c9eeca22-fc0f-4081-b430-bd5b67091106/tokens</code></pre>
+              <pre><code class="language-javascript">{
+  "uuid":"c9eeca22-fc0f-4081-b430-bd5b67091106",
+  "token":"167728cb25a449b39809ca2d82318703002d3628"
+}</code></pre>
+              <br /><br/>
+            </div>
+          </div>
+
+          <div class="col-md-12 table-responsive">
             <!-- <table class="table"><tr><td> -->
             <div class="feature col-md-2">
               <button class="btn btn-large btn-warning" disabled> PUT</button>
@@ -1427,6 +1446,13 @@ conn.on('ready', function(data){
     "temperature": 55
   }, function (data) {
     console.log(data);
+  });
+
+  // Get a new session token for a device
+  conn.generateAndStoreToken({
+    uuid:'xxxxxxx-some-other-uuid-xxxxxxxxx'
+  }, function(sessionToken){
+    console.log(sessionToken);
   });
 
 });
