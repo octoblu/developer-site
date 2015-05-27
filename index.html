@@ -312,11 +312,11 @@
             <div class="feature col-md-10">
               <b>/devices</b><br />
               <b>Payload: key=value (i.e. type=drone&color=black)</b>
-              <br />Registers a node or device with Meshblu. Meshblu returns a UUID device id and security token. You can pass any key/value pairs and even override Meshblu's auto-generated UUID and/or token by passing your own uuid and/or token in the payload i.e. uuid=123&token=456
+              <br />Registers a node or device with Meshblu. Meshblu returns a UUID device id and security token. You can pass any key/value pairs.
               <br />
               <b> Be sure to make note of your <strong>uuid</strong> and <strong>token</strong> as other calls require you to use these as a security check</b><br /><!br />
               <pre><code>curl -X POST -d "type=drone&color=black" http://meshblu.octoblu.com/devices</code></pre>
-              <pre><code class="language-javascript">{"type":"drone","color":"black","uuid":"6f72bc60-32d5-11e3-92e2-e94f95fc16a6","timestamp":1381537803046,"token":"4bbd2jm242dl5wmimbwz4rvlu77m0a4i","channel":"main","online":false,"_id":"5258980b56330f7dd000000d"}</code></pre>
+              <pre><code class="language-javascript">{"type":"drone","color":"black","timestamp":1381537803046,"token":"4bbd2jm242dl5wmimbwz4rvlu77m0a4i","channel":"main","online":false,"_id":"5258980b56330f7dd000000d"}</code></pre>
 
               <br /><br/>
             </div>
